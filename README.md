@@ -35,39 +35,36 @@ python3 -m http.server 8000
 Import do repositório → **Framework: Other**, Build Command e Output Directory
 vazios, **Root Directory: `.`** (os arquivos estão na raiz, não em subpasta).
 
-## Fotos pendentes
+## Imagens
 
-O hero usa a foto real da Patrícia. Os **9 cards de serviço** e a **foto da
-seção "Sobre"** ainda estão com um placeholder gráfico na paleta do site
-(gradientes quentes, sem ícone nem emoji) — as fotos originais do arquivo de
-design não puderam ser recuperadas em resolução utilizável.
+Todas as imagens estão aplicadas. Foram convertidas para WebP no tamanho de
+exibição (2x), somando **~376 KB** no total.
 
-Para colocar a foto real, salve o arquivo em `assets/servicos/` com o nome
-abaixo e troque a `<div class="card__media ph">` do card correspondente por:
-
-```html
-<div class="card__media">
-  <img src="/assets/servicos/massagem-terapeutica.jpg"
-       alt="Massagem terapêutica" loading="lazy">
-</div>
-```
-
-O `object-fit: cover` já está no CSS — a foto se ajusta sozinha ao card.
-
-| Card / seção          | Arquivo esperado                            |
+| Seção / card          | Arquivo                                     |
 | --------------------- | ------------------------------------------- |
-| Massagem Terapêutica  | `assets/servicos/massagem-terapeutica.jpg`  |
-| Liberação Miofascial  | `assets/servicos/liberacao-miofascial.jpg`  |
-| Drenagem Linfática    | `assets/servicos/drenagem-linfatica.jpg`    |
-| Massagem Relaxante    | `assets/servicos/massagem-relaxante.jpg`    |
-| Pedras Quentes        | `assets/servicos/pedras-quentes.jpg`        |
-| Esfoliação Corporal   | `assets/servicos/esfoliacao-corporal.jpg`   |
-| Reflexologia          | `assets/servicos/reflexologia.jpg`          |
-| Pré e Pós-operatório  | `assets/servicos/pre-pos-operatorio.jpg`    |
-| Massagem na Gravidez  | `assets/servicos/massagem-gravidez.jpg`     |
-| Seção "Sobre"         | `assets/sobre-espaco.jpg`                   |
+| Hero                  | `assets/patricia-reinhardt.webp` (+ `.jpg`) |
+| Sobre                 | `assets/sobre-espaco.webp`                  |
+| Massagem Terapêutica  | `assets/servicos/massagem-terapeutica.webp` |
+| Liberação Miofascial  | `assets/servicos/liberacao-miofascial.webp` |
+| Drenagem Linfática    | `assets/servicos/drenagem-linfatica.webp`   |
+| Massagem Relaxante    | `assets/servicos/massagem-relaxante.webp`   |
+| Pedras Quentes        | `assets/servicos/pedras-quentes.webp`       |
+| Esfoliação Corporal   | `assets/servicos/esfoliacao-corporal.webp`  |
+| Reflexologia          | `assets/servicos/reflexologia.webp`         |
+| Pré e Pós-operatório  | `assets/servicos/pre-pos-operatorio.webp`   |
+| Massagem na Gravidez  | `assets/servicos/massagem-gravidez.webp`    |
 
-Formato sugerido: JPG ou WebP, ~1200×1200 px, até ~250 KB cada.
+O `og:image` (1200x630) é gerado a partir da foto do hero.
+
+Para trocar qualquer foto depois: substitua o arquivo mantendo o nome. O
+`object-fit: cover` no CSS reenquadra sozinho, não precisa mexer no HTML.
+
+### Ajuste feito no card "Pré e Pós-operatório"
+
+O arquivo original vinha com uma tarja verde-petróleo escrita
+"EM AÇÃO! PRÉ E PÓS OPERATÓRIO?" impressa no topo — arte de post de rede
+social, fora da paleta do site e repetindo o título do card. A tarja foi
+recortada e a foto reenquadrada na mesma proporção dos outros cards.
 
 ## Depois de conectar o domínio
 

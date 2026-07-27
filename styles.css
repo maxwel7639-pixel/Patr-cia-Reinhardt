@@ -595,58 +595,6 @@ a { color: var(--wine); text-decoration: none; }
   line-height: 1.6;
 }
 
-/* ---------------------------------------------------------------------
-   Placeholders de imagem (.ph)
-   Cada bloco fica com uma textura própria na paleta do site enquanto as
-   fotos reais não chegam. Para trocar por foto: substitua a <div class="ph">
-   por <img src="assets/servicos/NOME.jpg" alt="..." loading="lazy"> — o
-   .card__media já faz object-fit: cover. Ver README.md.
-   --------------------------------------------------------------------- */
-
-/* Não declare `position` aqui: `.ph` é aplicado junto de `.card__media`
-   (absolute) e de `.about__photo`, e venceria por ordem de cascata. Cada host
-   já estabelece o próprio bloco de contenção para o `::after`. */
-.ph {
-  background-color: #3A312B;
-  background-image:
-    radial-gradient(75% 62% at 24% 18%, var(--ph-a, rgba(176, 86, 120, .7)) 0%, rgba(0, 0, 0, 0) 68%),
-    radial-gradient(72% 66% at 80% 84%, var(--ph-b, rgba(122, 132, 99, .6)) 0%, rgba(0, 0, 0, 0) 66%),
-    radial-gradient(130% 85% at 50% -10%, rgba(246, 241, 232, .18) 0%, rgba(0, 0, 0, 0) 58%),
-    linear-gradient(155deg, #6A5A50 0%, #3B322C 50%, #221D18 100%);
-}
-.ph::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: repeating-linear-gradient(
-    118deg,
-    rgba(246, 241, 232, .06) 0px,
-    rgba(246, 241, 232, .06) 1px,
-    rgba(0, 0, 0, 0) 1px,
-    rgba(0, 0, 0, 0) 13px);
-  opacity: .8;
-}
-
-.card--terapeutica  .ph { --ph-a: rgba(176, 86, 120, .72); --ph-b: rgba(122, 132, 99, .55); }
-.card--miofascial   .ph { --ph-a: rgba(122, 132, 99, .72); --ph-b: rgba(176, 86, 120, .48); }
-.card--drenagem     .ph { --ph-a: rgba(150, 178, 176, .62); --ph-b: rgba(214, 170, 86, .42); }
-.card--relaxante    .ph { --ph-a: rgba(214, 150, 178, .62); --ph-b: rgba(96, 106, 80, .6); }
-.card--pedras       .ph { --ph-a: rgba(224, 166, 72, .66);  --ph-b: rgba(150, 66, 98, .6); }
-.card--esfoliacao   .ph { --ph-a: rgba(232, 217, 195, .58); --ph-b: rgba(176, 86, 120, .5); }
-.card--reflexologia .ph { --ph-a: rgba(112, 128, 92, .72);  --ph-b: rgba(214, 170, 86, .46); }
-.card--operatorio   .ph { --ph-a: rgba(158, 78, 112, .66);  --ph-b: rgba(150, 178, 176, .46); }
-.card--gravidez     .ph { --ph-a: rgba(214, 150, 178, .64); --ph-b: rgba(232, 186, 108, .44); }
-
-/* A seção "Sobre" fica sobre o creme e não tem scrim: placeholder claro. */
-.ph--sobre {
-  background-color: #C8B9A6;
-  background-image:
-    radial-gradient(75% 62% at 26% 20%, rgba(176, 86, 120, .5) 0%, rgba(0, 0, 0, 0) 68%),
-    radial-gradient(72% 66% at 78% 84%, rgba(122, 132, 99, .55) 0%, rgba(0, 0, 0, 0) 66%),
-    linear-gradient(155deg, #E7DCCB 0%, #BCA994 55%, #8C7B6A 100%);
-}
-.ph--sobre::after { opacity: .35; }
-
 /* -------------------------- como funciona -------------------------- */
 
 .steps {
