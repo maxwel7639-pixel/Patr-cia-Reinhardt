@@ -53,7 +53,10 @@ body {
   background: var(--cream);
   color: var(--ink);
   font-family: var(--sans);
-  overflow-x: hidden;
+  /* clip (não hidden) evita overflow horizontal SEM criar um scroll
+     container no body — necessário para o position: sticky dos cards
+     de serviço funcionar no mobile (sticky-stack). */
+  overflow-x: clip;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -71,7 +74,10 @@ a { color: var(--wine); text-decoration: none; }
 
 .page {
   max-width: 100%;
-  overflow: hidden;
+  /* clip no eixo X contém os glows decorativos e evita scroll horizontal
+     sem transformar .page num scroll container — o que impediria o
+     position: sticky dos cards de serviço de funcionar (sticky-stack). */
+  overflow-x: clip;
   position: relative;
 }
 
@@ -1003,6 +1009,46 @@ a { color: var(--wine); text-decoration: none; }
 @media (max-width: 380px) {
   .btn-primary { padding: 15px 20px; font-size: 14.5px; }
   .btn-ghost   { padding: 15px 18px; }
+}
+
+/* --------------- sticky-stack dos serviços (mobile) --------------- */
+/* No mobile os cards de serviço deixam de ser grid e viram uma pilha:
+   cada card "gruda" no topo e o próximo sobe por cima, deixando um
+   pequeno sliver do anterior à mostra (offset de top crescente). */
+@media (max-width: 760px) {
+  .services__grid {
+    display: block;
+  }
+
+  .services__grid .card {
+    position: sticky;
+    top: var(--stack-top, 16px);
+    margin-bottom: clamp(16px, 4vw, 24px);
+    /* sombra no topo para separar visualmente os cards empilhados */
+    box-shadow: 0 -10px 26px rgba(15, 13, 11, .45);
+  }
+
+  /* wide card volta a ocupar a largura total (reset do grid do desktop) */
+  .services__grid .card--wide {
+    width: 100%;
+    justify-self: auto;
+  }
+
+  /* offset de top crescente para criar a sensação de pilha visível */
+  .services__grid .card:nth-child(1) { --stack-top: 16px; }
+  .services__grid .card:nth-child(2) { --stack-top: 28px; }
+  .services__grid .card:nth-child(3) { --stack-top: 40px; }
+  .services__grid .card:nth-child(4) { --stack-top: 52px; }
+  .services__grid .card:nth-child(5) { --stack-top: 64px; }
+  .services__grid .card:nth-child(6) { --stack-top: 76px; }
+  .services__grid .card:nth-child(7) { --stack-top: 88px; }
+  .services__grid .card:nth-child(8) { --stack-top: 100px; }
+  .services__grid .card:nth-child(9) { --stack-top: 112px; }
+}
+
+/* respeita movimento reduzido: sem empilhamento fixo */
+@media (prefers-reduced-motion: reduce) and (max-width: 760px) {
+  .services__grid .card { position: static; }
 }
 
 /* ------------------------ movimento reduzido ------------------------ */
